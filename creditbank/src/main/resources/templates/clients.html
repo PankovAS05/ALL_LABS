@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Клиенты</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{bar :: bar}"></div>
+<div class="content">
+    <h1>Клиенты</h1>
+    <a href="/clients/new">Добавить нового клиента</a>
+    <table>
+        <tr>
+            <th><a href="/clients/sorted?sortBy=id">ID</a></th>
+            <th><a href="/clients/sorted?sortBy=fio">ФИО</a></th>
+            <th>Адрес</th>
+            <th>Действия</th>
+        </tr>
+        <tr th:each="client : ${clients}">
+            <td th:text="${client.id}"></td>
+            <td th:text="${client.fio}"></td>
+            <td th:text="${client.addressId}"></td>
+            <td>
+                <a th:href="@{/clients/edit/{id}(id=${client.id})}">Редактировать</a>
+                <a th:href="@{/clients/delete/{id}(id=${client.id})}">Удалить</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>

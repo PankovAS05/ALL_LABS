@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Форма Клиента</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{bar :: bar}"></div>
+<div class="content">
+  <h1>Форма Клиента</h1>
+  <form th:action="@{/clients}" th:object="${client}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div>
+      <label>ФИО:</label>
+      <input type="text" th:field="*{fio}"/>
+    </div>
+    <div>
+      <label>Адрес:</label>
+      <select th:field="*{addressId}">
+        <option th:each="address : ${addresses}" th:value="${address.id}" th:text="${address.fullAddress}"></option>
+      </select>
+    </div>
+    <div>
+      <button type="submit">Сохранить</button>
+    </div>
+  </form>
+</div>
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Форма Адреса</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{bar :: bar}"></div>
+<div class="content">
+  <h1>Форма Адреса</h1>
+  <form th:action="@{/addresses}" th:object="${address}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div>
+      <label>Улица:</label>
+      <input type="text" th:field="*{street}"/>
+    </div>
+    <div>
+      <label>Город:</label>
+      <input type="text" th:field="*{city}"/>
+    </div>
+    <div>
+      <label>Почтовый индекс:</label>
+      <input type="text" th:field="*{zipCode}"/>
+    </div>
+    <div>
+      <button type="submit">Сохранить</button>
+    </div>
+  </form>
+</div>
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>

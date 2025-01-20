@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Счета</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{bar :: bar}"></div>
+<div class="content">
+  <h1>Счета</h1>
+  <a href="/accounts/new">Добавить новый счет</a>
+  <table>
+    <tr>
+      <th><a href="/accounts/sorted?sortBy=id">ID</a></th>
+      <th><a href="/accounts/sorted?sortBy=balance">Баланс</a></th>
+      <th>ФИО Клиента</th>
+      <th>Действия</th>
+    </tr>
+    <tr th:each="account : ${accounts}">
+      <td th:text="${account.id}"></td>
+      <td th:text="${account.balance}"></td>
+      <td th:text="${clientsMap[account.clientId]}"></td>
+      <td>
+        <a th:href="@{/accounts/edit/{id}(id=${account.id})}">Редактировать</a>
+        <a th:href="@{/accounts/delete/{id}(id=${account.id})}">Удалить</a>
+      </td>
+    </tr>
+  </table>
+</div>
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>

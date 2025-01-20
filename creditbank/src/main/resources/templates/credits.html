@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Кредиты</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{bar :: bar}"></div>
+<div class="content">
+  <h1>Кредиты</h1>
+  <a href="/credits/new">Добавить новый кредит</a>
+  <table>
+    <tr>
+      <th><a href="/credits/sorted?sortBy=id">ID</a></th>
+      <th><a href="/credits/sorted?sortBy=type">Тип</a></th>
+      <th><a href="/credits/sorted?sortBy=sum">Сумма</a></th>
+      <th><a href="/credits/sorted?sortBy=date_of_loan">Дата выдачи</a></th>
+      <th><a href="/credits/sorted?sortBy=end_date">Дата окончания</a></th>
+      <th>ФИО Клиента</th>
+      <th>Действия</th>
+    </tr>
+    <tr th:each="credit : ${credits}">
+      <td th:text="${credit.id}"></td>
+      <td th:text="${credit.type}"></td>
+      <td th:text="${credit.sum}"></td>
+      <td th:text="${#dates.format(credit.dateOfLoan, 'yyyy-MM-dd')}"></td>
+      <td th:text="${#dates.format(credit.endDate, 'yyyy-MM-dd')}"></td>
+      <td th:text="${credit.clientFio}"></td>
+      <td>
+        <a th:href="@{/credits/edit/{id}(id=${credit.id})}">Редактировать</a>
+        <a th:href="@{/credits/delete/{id}(id=${credit.id})}">Удалить</a>
+      </td>
+    </tr>
+  </table>
+</div>
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>

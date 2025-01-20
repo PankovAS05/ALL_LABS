@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Форма Кредита</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{bar :: bar}"></div>
+<div class="content">
+  <h1>Форма Кредита</h1>
+  <form th:action="@{/credits}" th:object="${credit}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div>
+      <label>Тип:</label>
+      <input type="text" th:field="*{type}"/>
+    </div>
+    <div>
+      <label>Сумма:</label>
+      <input type="text" th:field="*{sum}"/>
+    </div>
+    <div>
+      <label>Дата выдачи:</label>
+      <input type="date" th:field="*{dateOfLoan}"/>
+    </div>
+    <div>
+      <label>Срок (месяцы):</label>
+      <input type="number" th:field="*{termMonths}"/>
+    </div>
+    <div>
+      <label>ID Клиента:</label>
+      <select th:field="*{clientId}">
+        <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.fio}"></option>
+      </select>
+    </div>
+    <div>
+      <label>ID Счета:</label>
+      <select th:field="*{accountId}">
+        <option th:each="account : ${accounts}" th:value="${account.id}" th:text="${account.id}"></option>
+      </select>
+    </div>
+    <div>
+      <button type="submit">Сохранить</button>
+    </div>
+  </form>
+</div>
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>

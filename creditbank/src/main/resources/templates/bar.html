@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Боковая панель</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="bar" th:fragment="bar">
+    <h2>Меню</h2>
+    <ul>
+        <li><a href="/clients">Клиенты</a></li>
+        <li><a href="/addresses">Адреса</a></li>
+        <li><a href="/accounts">Счета</a></li>
+        <li><a href="/credits">Кредиты</a></li>
+    </ul>
+</div>
+</body>
+</html>
