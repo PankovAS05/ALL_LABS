@@ -7,47 +7,26 @@ public class Main {
         System.out.print("Введите номер задания для его решения:");
         switch (scan.nextLine()) {
             case "1":
-                // Создание HashMap для хранения дробей
-                Map<Frac, String> fractionMap = new HashMap<>();
+                System.out.print("Введите числитель: ");
+                Number numerator = scan.nextDouble();
 
-                // Ввод числителя и знаменателя с клавиатуры
-                System.out.print("Введите числитель для первой дроби: ");
-                int numerator1 = scan.nextInt();
-                System.out.print("Введите знаменатель для первой дроби: ");
-                int denominator1 = scan.nextInt();
-                Frac fraction1 = new Frac(numerator1, denominator1);
+                System.out.print("Введите знаменатель: ");
+                Number denominator = scan.nextDouble();
 
-                // Добавление первой дроби в HashMap
-                fractionMap.put(fraction1, "Первая дробь");
+                Drobi fraction = new Fraction(numerator, denominator);
+                System.out.println("Дробь: " + fraction);
+                System.out.println("Вещественное значение: " + fraction.getRealValue());
 
-                // Ввод числителя и знаменателя для второй дроби
-                System.out.print("Введите числитель для второй дроби: ");
-                int numerator2 = scan.nextInt();
-                System.out.print("Введите знаменатель для второй дроби: ");
-                int denominator2 = scan.nextInt();
-                Frac fraction2 = new Frac(numerator2, denominator2);
+                System.out.print("Введите новый числитель: ");
+                numerator = scan.nextDouble();
 
-                // Добавление второй дроби в HashMap
-                fractionMap.put(fraction2, "Вторая дробь");
+                System.out.print("Введите новый знаменатель: ");
+                denominator = scan.nextDouble();
 
-                // Вывод содержимого HashMap
-                System.out.println("Введенные дроби:");
-                for (Map.Entry<Frac, String> entry : fractionMap.entrySet()) {
-                    System.out.println(entry.getKey() + " = " + entry.getValue());
-                }
-
-                // Проверка на наличие дроби в HashMap
-                System.out.print("Введите числитель для поиска: ");
-                int searchNumerator = scan.nextInt();
-                System.out.print("Введите знаменатель для поиска: ");
-                int searchDenominator = scan.nextInt();
-                Frac searchFraction = new Frac(searchNumerator, searchDenominator);
-
-                if (fractionMap.containsKey(searchFraction)) {
-                    System.out.println("Найдена дробь: " + searchFraction + " = " + fractionMap.get(searchFraction));
-                } else {
-                    System.out.println("Дробь не найдена.");
-                }
+                fraction.setNumerator(numerator);
+                fraction.setDenominator(denominator);
+                System.out.println("Обновленная дробь: " + fraction);
+                System.out.println("Обновленное вещественное значение: " + fraction.getRealValue());
             case "2":
                 System.out.print("Введите имя кота: ");
                 String catName = scan.nextLine(); // Читаем имя кота
@@ -63,22 +42,22 @@ public class Main {
 
                 // Запрашиваем у пользователя количество раз, которое кот должен мяукать
                 System.out.print("Сколько раз кот должен мяукать? ");
-                int meowCount = scan.nextInt(); // Читаем количество мяуканий
+                int miaow = scan.nextInt(); // Читаем количество мяуканий
 
                 // Кот мяукает указанное количество раз
-                for (int i = 0; i < meowCount; i++) {
-                    catWithCounter.meow();
+                for (int i = 0; i < miaow; i++) {
+                    All_meow.makeThemMeow(new Miukai[]{catWithCounter});
                 }
 
                 // Выводим количество мяуканий кота
                 System.out.println("Количество мяуканий кота: " + CounterMen.getCount());
 
                 // Используем MeowingHelper для того, чтобы кот мяукал еще раз
-                System.out.println("С помощью MeowingHelper кот мяукает:");
+                System.out.println("Кот мяукает:");
                 All_meow.makeThemMeow(new Miukai[]{catWithCounter});
 
                 // Выводим количество мяуканий кота после работы MeowingHelper
-                System.out.println("Количество мяуканий кота после работы MeowingHelper: " + CounterMen.getCount());
+                System.out.println("Количество мяуканий кота: " + CounterMen.getCount());
                 break;
             case "3":
                 // Считываем количество элементов в списке
@@ -101,33 +80,35 @@ public class Main {
                 for (Number element : resultList) {
                     System.out.print(element + " ");
                 }
-            case "4":
-                String filename = "input.txt";
-
-                // Вызываем метод для обработки данных и вывода результатов
-                try {
-                    Map<String, Sportsman> sportsmenMap = Sportsman.readDataFromFile(filename);
-                    Sportsman.processResults(sportsmenMap);
-                } catch (IOException e) {
-                    System.out.println("Ошибка чтения файла: " + e.getMessage());
-                }
-            case "5":
-                String filename2 = "input2.txt";
-
-                // Обрабатываем текст
-                try {
-                    String text = SetSymbolFinder.readTextFromFile(filename2);
-                    Set<Character> uniqueChars = SetSymbolFinder.findUniqueCharsInWords(text);
-                    System.out.println("Символы, которые встречаются в одном и только в одном слове:");
-                    for (Character c : uniqueChars) {
-                        System.out.println(c);
-                    }
-                } catch (IOException e) {
-                    System.out.println("Ошибка чтения файла: " + e.getMessage());
-                }
-            default:
-                System.out.println("Данного задания не существует");
                 break;
+//            case "4":
+//                String filename = "input.txt";
+//
+//                // Вызываем метод для обработки данных и вывода результатов
+//                try {
+//                    Map<String, Sportsman> sportsmenMap = Sportsman.readDataFromFile(filename);
+//                    Sportsman.processResults(sportsmenMap);
+//                } catch (IOException e) {
+//                    System.out.println("Ошибка чтения файла: " + e.getMessage());
+//                }
+//                break;
+//            case "5":
+//                String filename2 = "input2.txt";
+//
+//                // Обрабатываем текст
+//                try {
+//                    String text = SetSymbolFinder.readTextFromFile(filename2);
+//                    Set<Character> uniqueChars = SetSymbolFinder.findUniqueCharsInWords(text);
+//                    System.out.println("Символы, которые встречаются в одном и только в одном слове:");
+//                    for (Character c : uniqueChars) {
+//                        System.out.println(c);
+//                    }
+//                } catch (IOException e) {
+//                    System.out.println("Ошибка чтения файла: " + e.getMessage());
+//                }
+//            default:
+//                System.out.println("Данного задания не существует");
+//                break;
 
         }
     }

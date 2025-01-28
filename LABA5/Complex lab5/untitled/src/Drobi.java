@@ -1,5 +1,5 @@
-public interface Drobi {
-    double getCacheFrac();
-    void setNumerator(int numerator);
-    void setDenominator(int denominator);
+interface Drobi {
+    double getRealValue();
+    void setNumerator(Number numerator);
+    void setDenominator(Number denominator);
 }

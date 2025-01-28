@@ -5,12 +5,11 @@ public class CounterMen {
         this.count = 0;
     }
 
-    // Метод для увеличения счетчика
-    public void increment() {
+
+    public void meow() {
         count++;
     }
 
-    // Метод для получения текущего значения счетчика
     public static int getCount() {
         return count;
     }
